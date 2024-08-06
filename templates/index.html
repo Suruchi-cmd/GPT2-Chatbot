@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .chat-messages {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #1c1c1c;
+            color: #ffffff;
+        }
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .message.user {
+            justify-content: flex-end;
+        }
+        .message.user .message-content {
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 20px 20px 0 20px;
+            padding: 10px 15px;
+            max-width: 70%;
+        }
+        .message.ai {
+            justify-content: flex-start;
+        }
+        .message.ai .message-content {
+            background-color: #333333;
+            border-radius: 20px 20px 20px 0;
+            padding: 10px 15px;
+            max-width: 70%;
+            color: #ffffff;
+        }
+        .chat-form {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #dddddd;
+            flex-shrink: 0;
+            background-color: #2c2c2c;
+        }
+        .chat-form input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #444444;
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: #1c1c1c;
+            color: #ffffff;
+        }
+        .chat-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-header">
+        AI Chatbot
+    </div>
+    <div class="chat-messages" id="chatbox">
+        <!-- Messages will be added dynamically here -->
+    </div>
+    <form class="chat-form" id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const form = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMessage = userInput.value.trim();
+            if (userMessage === '') return;
+
+            // Clear input field immediately
+            userInput.value = '';
+
+            // Send user message to Flask server
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: userMessage })
+            });
+
+            const data = await response.json();
+            const aiResponse = data.response;
+
+            // Display user message and AI response in chatbox
+            appendMessage('user', userMessage);
+            appendMessage('ai', aiResponse);
+
+            userInput.focus();
+        });
+
+        function appendMessage(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', role);
+
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = content;
+
+            messageDiv.appendChild(messageContent);
+            chatbox.appendChild(messageDiv);
+
+            // Scroll to bottom of chatbox
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
