@@ -63,10 +63,9 @@ This project provides a Flask-based web interface for interacting with a fine-tu
 ## Running the Flask App
 
 1. Navigate to the project directory and run the Flask app:
-  ```bash
-  export FLASK_APP=chatbot.py  # On Windows use `set FLASK_APP=chatbot.py`
-  flask run
+   ```bash
+   export FLASK_APP=chatbot.py  # On Windows use `set FLASK_APP=chatbot.py`
+   flask run
 
-3. Open your web browser and go to the ngrok URL provided in the terminal to use the application.
-
+2. Open your web browser and go to the ngrok URL provided in the terminal to use the application.
 
