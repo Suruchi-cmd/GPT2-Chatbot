@@ -41,8 +41,8 @@ This project provides a Flask-based web interface for interacting with a fine-tu
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   [git clone https://github.com/your-username/your-repo-name.git](https://github.com/Suruchi-cmd/GPT2-Chatbot.git
+   cd PT2-Chatbot
 
 2. Create a virtual environment and activate it:
    ```bash
