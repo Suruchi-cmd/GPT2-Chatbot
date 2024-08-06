@@ -56,11 +56,23 @@ This project provides a Flask-based web interface for interacting with a fine-tu
 4. Set Up ngrok
    ```bash
    import ngrok
-ngrok.set_auth_token('your_ngrok_auth_token')
+   ngrok.set_auth_token('your_ngrok_auth_token')
 
 
 ### Usage
+## Running the Flask App
 
+1.Navigate to the project directory and run the Flask app:
+  ```bash
+  export FLASK_APP=chatbot.py  # On Windows use `set FLASK_APP=chatbot.py`
+  flask run
+
+### Dependencies
+Flask
+transformers
+torch
+jupyter
+ngrok
 
 
    
