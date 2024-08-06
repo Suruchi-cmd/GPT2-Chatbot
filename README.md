@@ -43,3 +43,24 @@ This project provides a Flask-based web interface for interacting with a fine-tu
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name
+
+2. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+3. Install required dependencies
+   ```bash
+   pip install -r requirements.txt
+
+4. Set Up ngrok
+   ```bash
+   import ngrok
+ngrok.set_auth_token('your_ngrok_auth_token')
+
+
+### Usage
+
+
+
+   
