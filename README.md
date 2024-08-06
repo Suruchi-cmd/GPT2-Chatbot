@@ -1,7 +1,9 @@
 # Chatbot Flask Application
 
 A chatbot application that serves a fine-tuned GPT-2 model using Flask, with the model deployed on Hugging Face Spaces.
+![image](https://github.com/user-attachments/assets/ea877c28-65cb-4d24-88c2-9624ce74d22d)
 
+HuggingFace Model : SuruchiDS/PetersLectures
 ## Table of Contents
 - [Chatbot Flask Application](#chatbot-flask-application)
   - [Table of Contents](#table-of-contents)
